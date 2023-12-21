@@ -13,7 +13,7 @@ public class ECCKeyExchange {
     private static final int SECURITY_BITS = 128;
     EllipticCurve curve;
 
-    public BigInteger serverStart(PrintWriter out, ObjectOutputStream objectOutputStream, BufferedReader in, ObjectInputStream objectInputStream) throws IOException, ClassNotFoundException {
+    public BigInteger serverStart(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream, StringBuilder builder) throws IOException, ClassNotFoundException {
         // NIST BASE VALUES FOR G POINT
         BigInteger xG = new BigInteger("48439561293906451759052585252797914202762949526041747995844080717082404635286");
         BigInteger yG = new BigInteger("36134250956749795798585127919587881956611106672985015071877198253568414405109");
@@ -25,29 +25,29 @@ public class ECCKeyExchange {
 
         curve = new EllipticCurve(a, b, p);
         objectOutputStream.writeObject(curve);
-        logger.info("Sending NIST 256 version of curve to client");
-        logger.info(curve.toString());
+        builder.append("Sending NIST 256 version of curve to client").append(System.lineSeparator());
+        builder.append(curve.toString()).append(System.lineSeparator());
 
         // Generate a base point on the curve (P)
         Point P = new Point(xG, yG);
         objectOutputStream.writeObject(P);
-        logger.info("Sending G Base Point to client");
-        logger.info(P.toString());
+        builder.append("Sending G Base Point to client").append(System.lineSeparator());
+        builder.append(P).append(System.lineSeparator());
 
 
         BigInteger n = PrimeGenerator.generatePrimeNumber(SECURITY_BITS);
-        System.out.println("This N is private information, no one has it: " + n);
+        builder.append("This N is private information, no one has it: ").append(n).append(System.lineSeparator());
 
         Point nP = curve.multiply(P, n);
         objectOutputStream.writeObject(nP);
         objectOutputStream.flush();
-        logger.info("Sending N Point to client so he can multiply point and get shared key");
-        logger.info(nP.toString());
+        builder.append("Sending N * Point to client so he can multiply point and get shared key").append(System.lineSeparator());
+        builder.append(nP.toString()).append(System.lineSeparator());
 
         Point mP = (Point) objectInputStream.readObject();
         // Both parties compute the shared key
         Point sharedKeyOnServer = curve.multiply(mP, n);
-        System.out.println("This is shared private key, only client has it too: " + sharedKeyOnServer);
+        builder.append("This is shared private key (or Point), only client has it too: ").append(sharedKeyOnServer).append(System.lineSeparator());
         return sharedKeyOnServer.getX().multiply(sharedKeyOnServer.getY());
 
 //        // Verify that both shared keys are equal (they should be)

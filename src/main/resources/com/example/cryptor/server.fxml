@@ -14,11 +14,10 @@
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="800.0">
          <children>
-            <Button fx:id="rsaEncrypt" layoutX="27.0" layoutY="155.0" mnemonicParsing="false" onAction="#onRsaBtnClick" prefHeight="30.0" prefWidth="319.0" text="Encrypt &amp; send" />
-            <TextField fx:id="textFieldRsa" layoutX="27.0" layoutY="92.0" prefHeight="43.0" prefWidth="319.0" />
-            <ScrollPane layoutX="401.0" layoutY="58.0" prefHeight="422.0" prefWidth="354.0">
+            <Button fx:id="rsaEncrypt" layoutX="27.0" layoutY="101.0" mnemonicParsing="false" onAction="#onRsaBtnClick" prefHeight="30.0" prefWidth="192.0" text="Send RSA public key to client" />
+            <ScrollPane layoutX="258.0" layoutY="58.0" prefHeight="422.0" prefWidth="519.0">
                <content>
-                  <Text fx:id="labelWithTranslation" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="319.5830590724945">
+                  <Text fx:id="serverLbl" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="499.5830590724945">
                      <font>
                         <Font name="Roboto" size="18.0" />
                      </font>
@@ -26,10 +25,10 @@
                </content>
             </ScrollPane>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffc9c9" height="43.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
-            <Button fx:id="ecdhBth" layoutX="27.0" layoutY="419.0" mnemonicParsing="false" onAction="#onEcdhBtnClick" prefHeight="30.0" prefWidth="319.0" text="Encrypt &amp; send" />
-            <TextField fx:id="textFieldEcdh" layoutX="27.0" layoutY="356.0" prefHeight="43.0" prefWidth="319.0" />
+            <Button fx:id="ecdhBth" layoutX="27.0" layoutY="419.0" mnemonicParsing="false" onAction="#onEcdhBtnClick" prefHeight="30.0" prefWidth="192.0" text="Encrypt &amp; send" />
+            <TextField fx:id="textFieldEcdh" layoutX="27.0" layoutY="356.0" prefHeight="43.0" prefWidth="192.0" />
             <Label layoutX="27.0" layoutY="328.0" prefHeight="18.0" prefWidth="319.0" text="ECDH and AES cryptography" />
-            <Label layoutX="27.0" layoutY="58.0" prefHeight="18.0" prefWidth="319.0" text="RSA encrypting" />
+            <Label layoutX="27.0" layoutY="58.0" prefHeight="18.0" prefWidth="192.0" text="RSA encrypting" />
          </children>
       </AnchorPane>
    </children>
