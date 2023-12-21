@@ -8,23 +8,23 @@ import java.util.Scanner;
 
 public class Factorization {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Timer timer = new Timer();
-
-
-        for (int i = 10; i < 100; i++) {
-            BigInteger p = PrimeGenerator.generatePrimeNumber(i);
-            BigInteger q = PrimeGenerator.generatePrimeNumber(i);
-            System.out.println(p.toString() + " -- " + q.toString());
-            BigInteger number = p.multiply(q);
-            timer.startTimer();
-            factorize(number);
-            timer.stopTimer();
-        }
-
-        scanner.close();
-    }
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//        Timer timer = new Timer();
+//
+//
+//        for (int i = 10; i < 100; i++) {
+//            BigInteger p = PrimeGenerator.generatePrimeNumber(i);
+//            BigInteger q = PrimeGenerator.generatePrimeNumber(i);
+//            System.out.println(p.toString() + " -- " + q.toString());
+//            BigInteger number = p.multiply(q);
+//            timer.startTimer();
+//            factorize(number);
+//            timer.stopTimer();
+//        }
+//
+//        scanner.close();
+//    }
 
     // Function to factorize the product of two prime numbers
     private static void factorize(BigInteger product) {

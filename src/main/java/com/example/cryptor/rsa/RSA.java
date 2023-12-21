@@ -2,6 +2,7 @@ package com.example.cryptor.rsa;
 
 import com.example.cryptor.helpful.PrimeGenerator;
 import lombok.Getter;
+
 import java.math.BigInteger;
 
 public class RSA {
@@ -12,7 +13,6 @@ public class RSA {
     private BigInteger phi;
     @Getter
     private BigInteger e;
-    @Getter
     private BigInteger d;
 
     public RSA(int nLen, int eLen) {
@@ -30,6 +30,10 @@ public class RSA {
     }
 
     public String encrypt(String message) {
+        return encrypt(message, e,n);
+    }
+
+    public static String encrypt(String message, BigInteger e, BigInteger n) {
         StringBuilder ciphertextBuilder = new StringBuilder();
         for (int i = 0; i < message.length(); i++) {
             char c = message.charAt(i);
@@ -99,7 +103,7 @@ public class RSA {
 
     public String showKeys() {
         return "Public encryptor: " + e.toString() + " (" + e.toString(2).length() + ") bits" + System.lineSeparator() +
-               "Public N multiply: " + n.toString() + " (" + n.toString(2).length() + ") bits" + System.lineSeparator()+
+                "Public N multiply: " + n.toString() + " (" + n.toString(2).length() + ") bits" + System.lineSeparator()+
                 "Private decryptor: " + d.toString() + " (" + d.toString(2).length() + ") bits" + System.lineSeparator();
     }
 }

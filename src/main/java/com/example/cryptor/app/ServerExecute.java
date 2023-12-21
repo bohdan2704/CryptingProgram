@@ -7,20 +7,21 @@ import java.io.*;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-import static com.example.cryptor.app.Server.DESIRED_AES_KEY_LEN;
+//import static com.example.cryptor.app.Server.DESIRED_AES_KEY_LEN;
 
 public class ServerExecute {
-    public BigInteger executeECDH(PrintWriter out, ObjectOutputStream objectOutputStream, BufferedReader in, ObjectInputStream objectInputStream) {
-        System.out.println("ServerExecuteECDH");
-        ECCKeyExchange eccKeyExchange = new ECCKeyExchange();
-        try {
-            return eccKeyExchange.serverStart(out, objectOutputStream, in, objectInputStream);
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    public static final int DESIRED_AES_KEY_LEN = 256;
+//    public BigInteger executeECDH(PrintWriter out, ObjectOutputStream objectOutputStream, BufferedReader in, ObjectInputStream objectInputStream) {
+//        System.out.println("ServerExecuteECDH");
+//        ECCKeyExchange eccKeyExchange = new ECCKeyExchange();
+//        try {
+//            return eccKeyExchange.clientStart(objectOutputStream, objectInputStream);
+//        } catch (IOException | ClassNotFoundException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
-    public String executeAESDecrypt(BigInteger key, String encryptedMsg) {
+    public static String executeAESDecrypt(BigInteger key, String encryptedMsg) {
         key = key.shiftRight(key.bitLength() - DESIRED_AES_KEY_LEN + 1 );
         System.out.println(Arrays.toString(key.toByteArray()));
         System.out.println(key.toByteArray().length);
@@ -33,7 +34,7 @@ public class ServerExecute {
         return decryptedMsg;
     }
 
-    public String executeAESEncrypt(BigInteger key, String msgToEncrypt) {
+    public static String executeAESEncrypt(BigInteger key, String msgToEncrypt) {
         key = key.shiftRight(key.bitLength() - DESIRED_AES_KEY_LEN + 1);
         System.out.println(Arrays.toString(key.toByteArray()));
         System.out.println(key.toByteArray().length);

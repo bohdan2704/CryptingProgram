@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cryptor.Controller">
+   <children>
+      <AnchorPane prefHeight="500.0" prefWidth="800.0">
+         <children>
+            <Button fx:id="rsaEncrypt" layoutX="27.0" layoutY="155.0" mnemonicParsing="false" onAction="#onRsaBtnClick" prefHeight="30.0" prefWidth="199.0" text="Encrypt &amp; send" />
+            <TextField fx:id="textFieldRsa" layoutX="27.0" layoutY="92.0" prefHeight="43.0" prefWidth="199.0" />
+            <ScrollPane layoutX="258.0" layoutY="58.0" prefHeight="422.0" prefWidth="522.0">
+               <content>
+                  <Text fx:id="clientLbl" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="510.78307127952576">
+                     <font>
+                        <Font name="Roboto" size="18.0" />
+                     </font>
+                  </Text>
+               </content>
+            </ScrollPane>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffc9c9" height="43.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
+            <Button fx:id="ecdhBth" layoutX="27.0" layoutY="419.0" mnemonicParsing="false" onAction="#onEcdhBtnClick" prefHeight="30.0" prefWidth="199.0" text="Recieve secret message" />
+            <Label layoutX="27.0" layoutY="386.0" prefHeight="18.0" prefWidth="319.0" text="ECDH and AES cryptography" />
+            <Label layoutX="27.0" layoutY="58.0" prefHeight="18.0" prefWidth="199.0" text="RSA encrypting" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
